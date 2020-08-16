@@ -34,7 +34,7 @@ export interface WebAuthnLoginText {
 
 export interface Config {
   ApiKeyID: string;
-  Type: string;
+  Type?: "PHONE" | "EMAIL";
   ContainerID?: string;
   OnSuccess?: (payload: VerifySuccess) => void;
   IdentifierField?: string;
@@ -64,9 +64,9 @@ export interface Config {
   Styles?: Styles;
   OnError?: (error: any) => void;
   OnBegin?: OnBeginHandler;
-  CotterUserID?: String;
+  CotterUserID?: string;
   AuthRequestText?: Object;
-  AuthenticationMethod?: String;
+  AuthenticationMethod?: string;
 
   // For WebAuthn
   WebAuthnEnabled?: boolean;
@@ -80,8 +80,8 @@ export interface Config {
   RegisterWebAuthn?: boolean;
   IdentifierType?: string;
   AuthenticationMethodName?: string;
-  TermsOfServiceLink?: String;
-  PrivacyPolicyLink?: String;
+  TermsOfServiceLink?: string;
+  PrivacyPolicyLink?: string;
 }
 export interface OnBeginPayload {
   auth_required: boolean;
@@ -91,12 +91,12 @@ export interface OnBeginPayload {
   identifier_type: "EMAIL" | "PHONE";
 }
 export interface VerifySuccess {
-  email?: String;
-  phone?: String;
+  email?: string;
+  phone?: string;
   oauth_token: OAuthToken;
   user: User;
-  identifier?: String; // only from WebAuthn same as email/phone
-  status?: String; // only from WebAuthn = SUCCESS or CANCELED
+  identifier?: string; // only from WebAuthn same as email/phone
+  status?: string; // only from WebAuthn = SUCCESS or CANCELED
 }
 
 export interface Styles {
